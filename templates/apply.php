@@ -93,43 +93,56 @@ page_head('Prihláška do klubu', 'Sezóna ' . REG_SEASON . ' · vyplnenie trvá
     </div>
 
     <aside class="aside">
-      <div class="box box--yellow reveal">
-        <h3>Termín prihlasovania</h3>
-        <p>Prihlasovanie prebieha do <b><?= e(REG_DEADLINE) ?></b>. Následne pristupujeme k žiadostiam individuálne podľa voľných miest v jednotlivých kategóriách (ak ešte nejaké budú).</p>
-        <p style="font-size:.88rem">Hlavným kritériom je včasnosť prihlásenia a vek hráča. Vyhradzujeme si právo záujemcu odmietnuť, resp. zaradiť medzi čakateľov.</p>
-      </div>
-
-      <div class="box reveal">
-        <h3>Kategórie</h3>
-        <ul class="cats">
+      <div class="box reveal overview">
+        <div class="deadline">
+          <?= icon('calendar') ?>
+          <div><small>Prihlasovanie do</small><b><?= e(REG_DEADLINE) ?></b></div>
+        </div>
+        <h3>Kategórie a tréningy</h3>
+        <ul class="cat-rows">
           <?php foreach (REG_CATEGORIES as [$years, $name, $when]): ?>
-            <li><b><?= e($name) ?></b><span>nar. <?= e($years) ?></span><small><?= e($when) ?></small></li>
+            <li><div><b><?= e($name) ?></b><small><?= e($when) ?></small></div><span>nar. <?= e($years) ?></span></li>
           <?php endforeach; ?>
         </ul>
-        <p class="note">Do klubu prijímame hráčov narodených v roku <?= REG_MAX_YEAR ?> a starších, ktorí majú skončený 1. ročník ZŠ (k 31.07.2026).</p>
-        <p class="note"><b>Dorast</b> (nar. 31.12.2011 a starší) sa neprihlasuje cez formulár, ale osobným pohovorom s prezidentom (Peter Ondrej) alebo manažérom klubu (Michal Horniak). Napíšte nám na <a href="mailto:<?= e(CONTACT_EMAIL) ?>"><?= e(CONTACT_EMAIL) ?></a>.</p>
-      </div>
-
-      <div class="box reveal">
-        <h3>Členské</h3>
-        <p><b>60 € na polrok</b> (august – január, február – jún). Splatné celé (120 €) do 30.09.2026 alebo v dvoch častiach (2 × 60 € do 30.09.2026 a do 31.01.2027).</p>
-        <p style="font-size:.9rem">Zľava pre súrodencov: 5 € / polrok pre každého. Členské je stanovené ako minimálne, klub môžete podporiť aj vyššou sumou. Iné nastavenie platby dohodnite na <?= e(CONTACT_EMAIL) ?>.</p>
-      </div>
-
-      <div class="box box--green reveal">
-        <h3>Začiatok tréningov</h3>
-        <ul class="facts">
-          <li><?= icon('calendar') ?><div><small>Dorast, starší a mladší žiaci (nar. 2015 a skôr)</small><b>od 04.08.2026</b></div></li>
-          <li><?= icon('calendar') ?><div><small>Prípravka (nar. 2016 a mladší)</small><b>od 19.08.2026</b></div></li>
-        </ul>
-        <p style="font-size:.88rem;margin-top:1rem">Tréningy spravidla 2× týždenne, súťažné zápasy od posledného augustového víkendu.</p>
-      </div>
-
-      <div class="box reveal">
-        <h3>Otázky?</h3>
-        <p style="margin-bottom:.4rem"><a href="mailto:<?= e(CONTACT_EMAIL) ?>"><?= e(CONTACT_EMAIL) ?></a></p>
-        <p>tel. <a href="tel:<?= e(CONTACT_PHONE_RAW) ?>"><?= e(CONTACT_PHONE) ?></a> (Michal Horniak)</p>
+        <div class="ask">
+          <?= icon('mail') ?><a href="mailto:<?= e(CONTACT_EMAIL) ?>"><?= e(CONTACT_EMAIL) ?></a>
+          <?= icon('phone') ?><a href="tel:<?= e(CONTACT_PHONE_RAW) ?>"><?= e(CONTACT_PHONE) ?></a>
+        </div>
       </div>
     </aside>
+  </div>
+</section>
+
+<section class="section section--tint apply-info">
+  <div class="container">
+    <div class="section__head reveal"><div><span class="eyebrow">Pred prihlásením</span><h2>Dôležité informácie</h2></div></div>
+    <div class="info-grid">
+      <div class="info reveal">
+        <span class="info__ico"><?= icon('heart') ?></span>
+        <h3>Členské</h3>
+        <p class="info__big">60 € <small>na polrok</small></p>
+        <p>August – január a február – jún. Splatné celé (120 €) do 30.09.2026 alebo v dvoch častiach (2 × 60 € do 30.09.2026 a do 31.01.2027).</p>
+        <p class="info__muted">Zľava pre súrodencov 5 € / polrok pre každého. Suma je minimálna, klub môžete podporiť aj vyššou. Iné nastavenie platby dohodnite na <?= e(CONTACT_EMAIL) ?>.</p>
+      </div>
+      <div class="info reveal" style="--d:.08s">
+        <span class="info__ico"><?= icon('calendar') ?></span>
+        <h3>Začiatok tréningov</h3>
+        <ul class="dates">
+          <li><b>04.08.2026</b><span>dorast, starší a mladší žiaci (nar. 2015 a skôr)</span></li>
+          <li><b>19.08.2026</b><span>prípravka (nar. 2016 a mladší)</span></li>
+        </ul>
+        <p class="info__muted">Tréningy spravidla 2× týždenne, súťažné zápasy od posledného augustového víkendu.</p>
+      </div>
+      <div class="info reveal" style="--d:.16s">
+        <span class="info__ico"><?= icon('check') ?></span>
+        <h3>Podmienky prijatia</h3>
+        <ul class="ticks">
+          <li>Prijímame ročníky <?= REG_MAX_YEAR ?> a starších s ukončeným 1. ročníkom ZŠ (k 31.07.2026).</li>
+          <li>Rozhoduje včasnosť prihlásenia a vek hráča.</li>
+          <li>Po termíne posudzujeme žiadosti individuálne podľa voľných miest, prípadne zaradíme medzi čakateľov.</li>
+          <li><b>Dorast</b> (nar. 31.12.2011 a starší): osobný pohovor s prezidentom (Peter Ondrej) alebo manažérom (Michal Horniak), napíšte nám e-mail.</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>

@@ -52,3 +52,37 @@
 .box--green .facts small { color: rgba($white, .72); }
 .box--green .facts b { color: $white; }
 .box--yellow p b { font-weight: 800; }
+
+// Prehľad vedľa formulára
+.overview { padding: 1.6rem; background: $white; border-radius: 24px; box-shadow: $shadow-sm;
+  .deadline { display: flex; align-items: center; gap: .9rem; padding: 1rem 1.1rem; margin-bottom: 1.4rem; background: $yellow; border-radius: $radius-sm; color: $green-950;
+    .i { width: 2.4rem; height: 2.4rem; padding: .55rem; background: $white; border-radius: 12px; flex: none; }
+    small { display: block; font-size: .72rem; text-transform: uppercase; letter-spacing: .12em; font-weight: 700; opacity: .75; }
+    b { font-family: $font-head; font-size: 1.9rem; line-height: 1; } }
+  h3 { font-size: 1.35rem; margin-bottom: .8rem; }
+  .ask { display: grid; grid-template-columns: auto 1fr; gap: .5rem .7rem; align-items: center; margin-top: 1.3rem; padding-top: 1.2rem; border-top: 1px solid $line; font-size: .92rem;
+    .i { color: $green-600; width: 1.1rem; height: 1.1rem; } a { font-weight: 600; word-break: break-word; } } }
+.cat-rows { list-style: none; padding: 0; margin: 0; display: grid; gap: .5rem;
+  li { display: flex; align-items: center; justify-content: space-between; gap: .8rem; padding: .7rem .9rem; border-radius: 12px; background: $green-50; border-left: 4px solid $green-600 !important; border-bottom: 0 !important;
+    b { display: block; font-family: $font-head; font-size: 1.2rem; text-transform: uppercase; line-height: 1.1; color: $green-900; }
+    small { display: block; font-size: .78rem; color: $muted; margin-top: .15rem; line-height: 1.3; }
+    span { flex: none; font-family: $font-head; font-weight: 800; font-size: .95rem; letter-spacing: .04em; background: $yellow; color: $green-950; padding: .25em .7em; border-radius: 999px; white-space: nowrap; } } }
+
+// Dôležité informácie pod formulárom
+.apply-info .section__head { margin-bottom: 2rem; }
+.info-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.4rem; @include max(960px) { grid-template-columns: 1fr; } }
+.info { background: $white; border: 1px solid $line; border-radius: 22px; padding: 1.8rem; box-shadow: $shadow-sm; display: flex; flex-direction: column; gap: .2rem;
+  &__ico { display: grid; place-items: center; width: 3.2rem; height: 3.2rem; border-radius: 14px; background: $green-700; color: $white; margin-bottom: .8rem; .i { width: 1.5rem; height: 1.5rem; } }
+  h3 { font-size: 1.7rem; margin-bottom: .5rem; }
+  p { font-size: .95rem; line-height: 1.6; margin: 0 0 .7rem; }
+  &__big { font-family: $font-head; font-size: 3.4rem !important; font-weight: 800; line-height: 1 !important; color: $green-700; margin-bottom: .6rem !important; small { font-size: 1.1rem; color: $muted; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; } }
+  &__muted { color: $muted; font-size: .88rem !important; } }
+.dates { list-style: none; padding: 0; margin: 0 0 1rem; display: grid; gap: .8rem;
+  li { padding: .9rem 1rem; background: $green-50; border-radius: 12px; border-left: 4px solid $yellow-600;
+    b { display: block; font-family: $font-head; font-size: 1.8rem; line-height: 1; color: $green-900; }
+    span { font-size: .88rem; color: $muted; line-height: 1.4; display: block; margin-top: .2rem; } } }
+.ticks { list-style: none; padding: 0; margin: 0; display: grid; gap: .8rem;
+  li { position: relative; padding-left: 2rem; font-size: .93rem; line-height: 1.55;
+    &::before { content: ''; position: absolute; left: 0; top: .2rem; width: 1.3rem; height: 1.3rem; border-radius: 50%; background: $green-600 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/62% no-repeat; } } }
+.overview .cat-rows li { padding: .75rem 1rem !important; }
+.overview .ask a { text-decoration: none; &:hover { color: $green-500; } }
