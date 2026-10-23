@@ -4,3 +4,5 @@ tools/failed.txt
 tools/*.log
 .DS_Store
 Thumbs.db
+data/*.csv
+data/*.log

@@ -1,0 +1,54 @@
+@use "vars" as *;
+
+// Prihláška
+.apply { background: $white; border: 1px solid $line; border-radius: 24px; padding: clamp(1.4rem, 3vw, 2.4rem); box-shadow: $shadow; margin-top: 2rem;
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; @include max(620px) { grid-template-columns: 1fr; } }
+  .field { margin-bottom: 1.1rem; }
+  label, .lbl { display: block; font-weight: 600; font-size: .92rem; margin-bottom: .4rem; color: $green-900; }
+  input[type=text], input[type=email], input[type=tel], textarea { width: 100%; padding: .95em 1.05em; border: 2px solid $line; border-radius: 14px; font: inherit; background: $green-50; transition: .2s; color: $ink;
+    &:focus { outline: 0; border-color: $green-600; background: $white; box-shadow: 0 0 0 4px rgba($green-500, .18); }
+    &.invalid { border-color: #c0281d; background: #fff6f5; } }
+  textarea { min-height: 120px; resize: vertical; }
+  .err { color: #c0281d; font-size: .86rem; margin-top: .35rem; display: block; font-weight: 500; }
+  .muted { color: $muted; font-size: .95rem; line-height: 1.6; }
+  .hp { position: absolute; left: -9999px; height: 0; overflow: hidden; }
+  fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+  legend { font-family: $font-head; font-weight: 800; text-transform: uppercase; font-size: 1.7rem; color: $green-900; letter-spacing: .02em; margin-bottom: 1.1rem; padding: 0; }
+  .check { display: flex; gap: .7rem; align-items: flex-start; font-weight: 500; font-size: .9rem; line-height: 1.5; input { margin-top: .3em; accent-color: $green-700; width: 18px; height: 18px; flex: none; } }
+  .step { display: none; &.is-active { display: block; animation: rise .45s both; } }
+  &__nav { display: flex; gap: .8rem; align-items: center; justify-content: flex-end; margin-top: 1.6rem; padding-top: 1.4rem; border-top: 1px solid $line; flex-wrap: wrap; [data-prev] { margin-right: auto; } }
+}
+.no-js .apply .step { display: block; margin-bottom: 1.6rem; }
+.no-js .apply [data-next], .no-js .apply [data-prev], .no-js .apply .steps { display: none; }
+.apply:not(.on-last) [data-submit] { display: none; }
+.apply.on-last [data-next] { display: none; }
+.no-js .apply [data-submit] { display: inline-flex; }
+
+.steps { list-style: none; display: flex; gap: .5rem; padding: 0; margin: 0 0 1.8rem;
+  li { flex: 1; display: flex; align-items: center; gap: .6rem; padding: .6rem .8rem; border-radius: 14px; background: $green-50; color: $muted; font-weight: 600; font-size: .9rem; transition: .3s;
+    b { display: grid; place-items: center; width: 1.9rem; height: 1.9rem; flex: none; border-radius: 50%; background: $white; border: 2px solid $line; font-family: $font-head; font-size: 1.1rem; color: $muted; transition: .3s; }
+    &.on { background: $green-700; color: $white; b { background: $yellow; border-color: $yellow; color: $green-950; } }
+    &.done { background: $green-100; color: $green-800; b { background: $green-600; border-color: $green-600; color: $white; } }
+    @include max(560px) { span { display: none; } justify-content: center; } } }
+
+.choices { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; @include max(520px) { grid-template-columns: 1fr; } }
+.choice { display: flex !important; align-items: center; gap: .7rem; margin: 0 !important; padding: .9rem 1.1rem; border: 2px solid $line; border-radius: 14px; cursor: pointer; font-weight: 600 !important; background: $white; transition: .2s;
+  input { accent-color: $green-700; width: 18px; height: 18px; flex: none; margin: 0; }
+  &:hover { border-color: $green-500; }
+  &:has(input:checked) { border-color: $green-700; background: $green-50; box-shadow: 0 0 0 3px rgba($green-500, .18); } }
+
+.hint { margin: -.2rem 0 1.1rem; padding: .8rem 1rem; border-radius: 12px; font-size: .92rem; font-weight: 600; background: $green-100; color: $green-900; border-left: 5px solid $green-600;
+  &.bad { background: #fff4e5; border-color: #e08a00; color: #7a4a00; } }
+
+.thanks { background: $green-50; border: 2px solid $green-600; border-radius: 24px; padding: clamp(1.6rem, 4vw, 3rem); margin-top: 1rem;
+  > .i { width: 4rem; height: 4rem; padding: 1rem; background: $green-600; color: $white; border-radius: 50%; margin-bottom: 1rem; }
+  h2 { margin-bottom: .4em; } .sign { font-weight: 600; color: $green-900; } .btn { margin-top: .6rem; } }
+
+.cats { list-style: none; padding: 0; margin: 0 0 1rem; display: grid; gap: .6rem;
+  li { padding: .7rem .9rem; background: $white; border-radius: 12px; border: 1px solid $line !important; line-height: 1.3;
+    b { display: block; font-family: $font-head; font-size: 1.25rem; text-transform: uppercase; color: $green-900; }
+    span { font-weight: 600; font-size: .88rem; } small { display: block; color: $muted; font-size: .8rem; margin-top: .15rem; } } }
+.box .note { font-size: .88rem; line-height: 1.5; color: $muted; &:last-child { margin-bottom: 0; } }
+.box--green .facts small { color: rgba($white, .72); }
+.box--green .facts b { color: $white; }
+.box--yellow p b { font-weight: 800; }

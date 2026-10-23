@@ -82,7 +82,7 @@ function nav_active(string $href, string $current): bool
           </li>
         <?php endforeach; ?>
       </ul>
-      <a class="btn btn--yellow nav__cta" href="<?= e(REG_FORM_URL) ?>" target="_blank" rel="noopener">Prihlásiť sa</a>
+      <a class="btn btn--yellow nav__cta" href="<?= e(url('prihlaska/')) ?>">Prihlásiť sa</a>
     </nav>
   </div>
 </header>

@@ -36,7 +36,7 @@ if (preg_match('~^page/(\d+)$~', $path, $m)) redirect('aktuality/' . ($m[1] > 1 
 
 if ($path === 'sitemap.xml') {
     header('Content-Type: application/xml; charset=utf-8');
-    $urls = ['', 'o-nas/', 'treneri/', 'timy/', 'pripravka/', 'mladsi-ziaci/', 'ziaci/', 'dorast/', 'aktuality/', 'projekt/', 'plany/', 'udialo-sa/', 'podporim/', '2-percenta/', 'kontakt/', 'gdpr/'];
+    $urls = ['', 'o-nas/', 'treneri/', 'timy/', 'pripravka/', 'mladsi-ziaci/', 'ziaci/', 'dorast/', 'aktuality/', 'projekt/', 'plany/', 'udialo-sa/', 'podporim/', '2-percenta/', 'prihlaska/', 'kontakt/', 'gdpr/'];
     foreach (all_posts() as $p) $urls[] = $p['slug'] . '/';
     echo '<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
     foreach ($urls as $u) echo '<url><loc>' . e(abs_url($u)) . '</loc></url>';
@@ -72,6 +72,11 @@ if (isset($simple[$path])) {
 if (isset(TEAMS[$path])) {
     $team = TEAMS[$path];
     render('team', ['slug' => $path, 'team' => $team, 'meta' => ['title' => $team['name'] . ' (' . $team['tag'] . ')', 'description' => $team['blurb'], 'image' => 'assets/uploads/' . $team['hero']]]);
+    exit;
+}
+
+if ($path === 'prihlaska') {
+    require __DIR__ . '/inc/apply.php';
     exit;
 }
 

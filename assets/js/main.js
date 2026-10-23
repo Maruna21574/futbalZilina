@@ -117,3 +117,95 @@
     });
   }
 })();
+
+// Prihláška: kroky, validácia, nápoveda ku kategórii
+(() => {
+  const form = document.querySelector('form.apply');
+  if (!form) return;
+  const steps = [...form.querySelectorAll('.step')];
+  const items = [...form.querySelectorAll('.steps li')];
+  const prev = form.querySelector('[data-prev]'), next = form.querySelector('[data-next]');
+  const q = n => form.querySelector(`[name="${n}"]`);
+  const min = +form.dataset.min, max = +form.dataset.max;
+  const years = JSON.parse(form.dataset.years || '{}');
+  let cur = Math.min(steps.length, Math.max(1, +form.dataset.start || 1));
+
+  const note = (box, msg) => {
+    box.querySelectorAll('.err.js').forEach(x => x.remove());
+    if (!msg) return;
+    const s = document.createElement('span');
+    s.className = 'err js';
+    s.textContent = msg;
+    box.appendChild(s);
+  };
+  const rules = {
+    parent_name: v => v.trim().length < 3 && 'Zadajte meno a priezvisko rodiča.',
+    parent_email: v => !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v.trim()) && 'Zadajte platný e-mail.',
+    parent_phone: v => !/^\+?[0-9 ()\/-]{9,20}$/.test(v.trim()) && 'Zadajte platné telefónne číslo.',
+    player_name: v => v.trim().length < 3 && 'Zadajte meno a priezvisko hráča.',
+    birth_year: v => {
+      if (!/^\d{4}$/.test(v.trim())) return 'Zadajte rok narodenia v tvare RRRR (napr. 2016).';
+      if (+v < min) return 'Hráči narodení v roku 2011 a starší sa neprihlasujú cez formulár (dorast – osobný pohovor).';
+      if (+v > max) return `Do klubu prijímame len hráčov narodených v roku ${max} a starších.`;
+      return false;
+    },
+  };
+  const validate = step => {
+    let first = null;
+    step.querySelectorAll('.err:not(.js)').forEach(x => x.remove());
+    for (const [name, rule] of Object.entries(rules)) {
+      const el = q(name);
+      if (!el || !step.contains(el)) continue;
+      const m = rule(el.value);
+      el.classList.toggle('invalid', !!m);
+      note(el.closest('.field'), m);
+      if (m && !first) first = el;
+    }
+    if (step.contains(q('cvc'))) {
+      for (const n of ['cvc', 'voucher']) {
+        const box = q(n).closest('.field');
+        const ok = form.querySelector(`[name="${n}"]:checked`);
+        note(box, ok ? '' : 'Vyberte jednu možnosť.');
+        if (!ok && !first) first = q(n);
+      }
+      const g = q('gdpr');
+      note(g.closest('.field'), g.checked ? '' : 'Potvrďte súhlas so spracovaním osobných údajov.');
+      if (!g.checked && !first) first = g;
+    }
+    return first;
+  };
+  const show = (n, scroll = true) => {
+    cur = n;
+    steps.forEach((s, i) => s.classList.toggle('is-active', i === n - 1));
+    items.forEach((li, i) => { li.classList.toggle('on', i === n - 1); li.classList.toggle('done', i < n - 1); });
+    prev.hidden = n === 1;
+    form.classList.toggle('on-last', n === steps.length);
+    if (scroll) form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+  next.addEventListener('click', () => { const bad = validate(steps[cur - 1]); if (bad) bad.focus(); else show(cur + 1); });
+  prev.addEventListener('click', () => show(cur - 1));
+  form.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && e.target.tagName === 'INPUT' && e.target.type !== 'submit' && cur < steps.length) { e.preventDefault(); next.click(); }
+  });
+  form.addEventListener('submit', e => {
+    for (let i = 0; i < steps.length; i++) {
+      const bad = validate(steps[i]);
+      if (bad) { e.preventDefault(); show(i + 1, false); bad.focus(); return; }
+    }
+  });
+
+  const hint = document.getElementById('year-hint'), by = q('birth_year');
+  const upd = () => {
+    const v = by.value.trim();
+    if (!/^\d{4}$/.test(v)) { hint.hidden = true; return; }
+    const y = +v;
+    hint.hidden = false;
+    hint.classList.toggle('bad', !years[y]);
+    hint.textContent = years[y]
+      ? `Kategória: ${years[y]}.`
+      : (y < min ? 'Ročník 2011 a starší: dorast sa neprihlasuje cez formulár, ale osobným pohovorom. Napíšte nám e-mail.' : `Na túto sezónu prijímame ročníky ${max} a starších.`);
+  };
+  by.addEventListener('input', upd);
+  upd();
+  show(cur, false);
+})();

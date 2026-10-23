@@ -14,7 +14,16 @@ const ORG_IBAN = 'SK98 8330 0000 0025 0144 4805';
 // Prihlasovanie na sezónu (banner na úvodnej stránke)
 const REG_SEASON = '2026/2027';
 const REG_DEADLINE = '30.06.2026';
-const REG_FORM_URL = 'https://forms.gle/LNrfVzafCem1FCaw7';
+
+// Prihláška (formulár na webe /prihlaska/): rok narodenia -> kategória a tréningy
+const REG_MIN_YEAR = 2012;   // starší hráči (do 31.12.2011) = dorast, osobný pohovor
+const REG_MAX_YEAR = 2019;   // do klubu prijímame ročníky 2019 a starších
+const REG_CATEGORIES = [
+    ['2012 a 2013', 'Starší žiaci', 'utorok a štvrtok 18:15 – 19:45', [2012, 2013]],
+    ['2014 a 2015', 'Mladší žiaci', 'utorok a štvrtok 15:30 – 17:00', [2014, 2015]],
+    ['2016 a 2017', 'Staršia prípravka', 'streda a piatok 15:30 – 17:00', [2016, 2017]],
+    ['2018 a 2019', 'Mladšia prípravka', 'streda a piatok 15:30 – 17:00', [2018, 2019]],
+];
 
 const POSTS_PER_PAGE = 12;
 

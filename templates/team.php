@@ -28,7 +28,7 @@ page_head($team['name'], $team['blurb'], [['Tímy', 'timy/']], upload($hero), $t
       <div class="box box--yellow reveal">
         <h3>Chceš hrať s nami?</h3>
         <p>Prihlásiť sa môžeš cez formulár. Sezóna <?= e(REG_SEASON) ?>.</p>
-        <a class="btn btn--green btn--sm" href="<?= e(REG_FORM_URL) ?>" target="_blank" rel="noopener">Prihlasovací formulár <?= icon('arrow') ?></a>
+        <a class="btn btn--green btn--sm" href="<?= e(url('prihlaska/')) ?>">Prihlasovací formulár <?= icon('arrow') ?></a>
       </div>
       <div class="box reveal">
         <h3>Info o tíme</h3>

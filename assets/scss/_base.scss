@@ -77,3 +77,5 @@ ul, ol { padding-left: 1.3em; }
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s cubic-bezier(.2, .7, .2, 1); transition-delay: var(--d, 0s);
   &.in { opacity: 1; transform: none; } }
 .no-js .reveal { opacity: 1; transform: none; }
+
+[hidden] { display: none !important; }

@@ -10,7 +10,7 @@ $feature = array_shift($latest);
       <h1>Bojujeme o <mark>dušu</mark> <span>na ihrisku i v živote</span></h1>
       <p class="hero__lead">Futbal, ktorý vychováva. Od prípravky až po dorast učíme deti a mladých ľudí hrať s radosťou, fair play a charakterom – v duchu saleziánskej tradície dona Bosca.</p>
       <div class="hero__cta">
-        <a class="btn btn--yellow" href="<?= e(REG_FORM_URL) ?>" target="_blank" rel="noopener">Prihlásiť do klubu <?= icon('arrow') ?></a>
+        <a class="btn btn--yellow" href="<?= e(url('prihlaska/')) ?>">Prihlásiť do klubu <?= icon('arrow') ?></a>
         <a class="btn btn--ghost" href="<?= e(url('o-nas/')) ?>">Spoznaj klub</a>
       </div>
     </div>

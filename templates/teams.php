@@ -8,7 +8,7 @@
       <div>
         <h2>Prihlás sa na sezónu <?= e(REG_SEASON) ?></h2>
         <p>Prihlasovanie trvá do <?= e(REG_DEADLINE) ?> a následne po individuálnej dohode.</p>
-        <a class="btn btn--yellow" href="<?= e(REG_FORM_URL) ?>" target="_blank" rel="noopener">Prihlasovací formulár <?= icon('arrow') ?></a>
+        <a class="btn btn--yellow" href="<?= e(url('prihlaska/')) ?>">Prihlasovací formulár <?= icon('arrow') ?></a>
       </div>
       <div class="cta-band__side"><div class="big">4</div><span class="lbl">tímy pre každý vek</span></div>
     </div>

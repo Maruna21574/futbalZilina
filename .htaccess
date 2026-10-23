@@ -6,7 +6,7 @@ DirectoryIndex index.php
 RewriteEngine On
 
 # Citlivé / interné priečinky nie sú dostupné z webu
-RewriteRule ^(inc|templates|content|tools|node_modules)(/|$) - [F,L]
+RewriteRule ^(inc|templates|content|tools|data|node_modules)(/|$) - [F,L]
 RewriteRule (^|/)\.(?!well-known) - [F,L]
 
 # Presmerovanie na https (odkomentujte po zapnutí SSL certifikátu)
