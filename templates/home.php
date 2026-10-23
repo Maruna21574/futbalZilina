@@ -109,7 +109,7 @@ $feature = array_shift($latest);
   </div>
 </section>
 
-<section class="section section--tint">
+<section class="section section--tint" id="vysledky">
   <div class="container">
     <div class="section__head reveal">
       <div>

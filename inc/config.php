@@ -59,12 +59,16 @@ const RESULTS = [
     ['dorast', 'Dorast – futsal', 'https://www.sportvin.sk/clanky/1979', 'sportvin.sk'],
 ];
 
+// Menu: [popis, odkaz, [podpoložky]]. Podpoložka: [popis, odkaz] | [popis, null, 'heading'] (nadpis skupiny)
+// Odkaz začínajúci http je externý (otvára sa v novom okne). Z RESULTS sa vkladá do menu Výsledky.
 const NAV = [
-    ['Domov', ''],
-    ['O nás', 'o-nas/', [['Info o klube', 'o-nas/'], ['Profil trénera', 'treneri/']]],
     ['Tímy', 'timy/', [['Prípravka (U11)', 'pripravka/'], ['Mladší žiaci (U13)', 'mladsi-ziaci/'], ['Starší žiaci (U15)', 'ziaci/'], ['Dorast (U19)', 'dorast/']]],
+    ['Výsledky', '#vysledky', 'results'],
     ['Aktuality', 'aktuality/'],
-    ['Projekt MŠVVaŠ SR', 'projekt/', [['Základné info', 'projekt/'], ['Plánované aktivity', 'plany/'], ['Udialo sa', 'udialo-sa/']]],
+    ['Klub', 'o-nas/', [
+        ['O klube', null, 'heading'], ['Info o klube', 'o-nas/'], ['Profil trénera', 'treneri/'],
+        ['Projekt MŠVVaŠ SR', null, 'heading'], ['Základné info', 'projekt/'], ['Plánované aktivity', 'plany/'], ['Udialo sa', 'udialo-sa/'],
+    ]],
     ['Podporte nás', 'podporim/', [['Podporím klub', 'podporim/'], ['2 % z dane', '2-percenta/']]],
     ['Kontakt', 'kontakt/'],
 ];

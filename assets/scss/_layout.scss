@@ -32,6 +32,11 @@
     a { display: block; padding: .6rem .9rem; border-radius: 8px; color: $ink; font-weight: 600; font-size: .95rem; &:hover { background: $green-50; color: $green-700; } } }
   .has-sub:hover .sub, .has-sub:focus-within .sub { opacity: 1; visibility: visible; transform: none; }
   &__cta { white-space: nowrap; }
+  .nav__home { display: none; }
+  .sub { min-width: 250px;
+    a { display: flex; align-items: center; justify-content: space-between; gap: .8rem; .i { width: .9em; height: .9em; color: $green-500; opacity: .8; } } }
+  .sub__head { padding: .7rem .9rem .3rem; font-family: $font-head; font-weight: 800; font-size: .95rem; letter-spacing: .14em; text-transform: uppercase; color: $green-600; border-top: 1px solid $line; margin-top: .4rem;
+    &:first-child { border-top: 0; margin-top: 0; padding-top: .3rem; } }
   @media (max-width: 1100px) { > ul > li > a { padding-inline: .55rem; font-size: 1.02rem; } .brand__text { display: none; } }
 }
 .burger { display: none; background: $green-700; color: $white; border: 0; border-radius: 12px; width: 48px; height: 48px; place-items: center; cursor: pointer; .i { width: 26px; height: 26px; } }
@@ -44,6 +49,9 @@
     .sub { position: static; opacity: 1; visibility: visible; transform: none; background: transparent; box-shadow: none; border: 0; padding: .3rem 0 .6rem 1rem; min-width: 0; display: none;
       a { color: rgba($white, .8); &:hover { background: transparent; color: $yellow; } } }
     .has-sub.open .sub { display: block; }
+    .nav__home { display: block; > a { display: block; color: $white; font-family: $font-head; font-weight: 700; font-size: 1.5rem; letter-spacing: .07em; text-transform: uppercase; padding: .7rem .2rem; border-bottom: 1px solid rgba($white, .1); &:hover { color: $yellow; } } }
+    .sub__head { color: $yellow; border-top-color: rgba($white, .12); }
+    .sub a .i { color: $yellow; }
     .has-sub.open > a .i { transform: rotate(180deg); }
     &__cta { text-align: center; justify-content: center; margin-top: .6rem; } }
   body.nav-open .nav { transform: none; }

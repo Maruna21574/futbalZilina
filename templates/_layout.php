@@ -56,12 +56,27 @@ function nav_active(string $href, string $current): bool
     <button class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav"><?= icon('menu') ?></button>
     <nav class="nav" id="nav" aria-label="Hlavné menu">
       <ul>
-        <?php foreach (NAV as $item): [$label, $href] = $item; $sub = $item[2] ?? null; $active = nav_active($href, $current) || ($sub && array_filter($sub, fn($s) => nav_active($s[1], $current))); ?>
+        <li class="nav__home"><a href="<?= e(url()) ?>">Domov</a></li>
+        <?php foreach (NAV as $item):
+          [$label, $href] = $item;
+          $sub = $item[2] ?? null;
+          if ($sub === 'results') {
+              $sub = array_map(fn($r) => [$r[1], $r[2]], RESULTS);
+          }
+          $isExt = fn($h) => (bool)preg_match('~^https?://~', (string)$h);
+          $active = nav_active($href, $current) && $href[0] !== '#';
+          if (!$active && is_array($sub)) foreach ($sub as $s) { if (!empty($s[1]) && !$isExt($s[1]) && nav_active($s[1], $current)) { $active = true; break; } }
+          $href = $href[0] === '#' ? url() . $href : url($href);
+        ?>
           <li class="<?= $sub ? 'has-sub' : '' ?> <?= $active ? 'is-active' : '' ?>">
-            <a href="<?= e(url($href)) ?>"><?= e($label) ?><?= $sub ? icon('chev') : '' ?></a>
+            <a href="<?= e($href) ?>"><?= e($label) ?><?= $sub ? icon('chev') : '' ?></a>
             <?php if ($sub): ?>
               <ul class="sub">
-                <?php foreach ($sub as [$sl, $sh]): ?><li><a href="<?= e(url($sh)) ?>"><?= e($sl) ?></a></li><?php endforeach; ?>
+                <?php foreach ($sub as $s): ?>
+                  <?php if (($s[2] ?? '') === 'heading'): ?><li class="sub__head"><?= e($s[0]) ?></li>
+                  <?php elseif ($isExt($s[1])): ?><li><a href="<?= e($s[1]) ?>" target="_blank" rel="noopener"><?= e($s[0]) ?> <?= icon('ext') ?></a></li>
+                  <?php else: ?><li><a href="<?= e(url($s[1])) ?>"><?= e($s[0]) ?></a></li><?php endif; ?>
+                <?php endforeach; ?>
               </ul>
             <?php endif; ?>
           </li>
