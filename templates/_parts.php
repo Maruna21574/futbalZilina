@@ -66,3 +66,39 @@ function results_tiles(?string $only = null): void
   <?php endforeach; ?>
 </div>
 <?php }
+
+function team_results(string $slug, array $team): void
+{
+    if (empty($team['sportnet'])) return;
+    $base = 'https://sportnet.sme.sk/futbalnet/k/1-ksk-zilina/tim/' . $team['sportnet'] . '/';
+    $items = [
+        ['Tabuľka', 'Aktuálne poradie v súťaži', 'tabulky/', 'trophy'],
+        ['Výsledky', 'Odohrané zápasy a skóre', 'vysledky/', 'ball'],
+        ['Program', 'Nadchádzajúce zápasy', 'program/', 'calendar'],
+        ['Súpiska', 'Hráči a tréneri tímu', 'hraci/', 'users'],
+    ];
+    foreach (RESULTS as [$s, $label, $href, $host]) {
+        if ($s === $slug && $host === 'sportvin.sk') $items[] = [$label, 'Výsledky na sportvin.sk', null, 'trophy', $href];
+    }
+    ?>
+<section class="section section--tint" id="vysledky">
+  <div class="container">
+    <div class="section__head reveal">
+      <div>
+        <span class="eyebrow">Súťaž</span>
+        <h2>Výsledky a tabuľky</h2>
+        <p><?= e($team['name']) ?> (<?= e($team['tag']) ?>) · <?= e($team['league']) ?>. Aktuálne dáta nájdeš na portáli sportnet.sme.sk.</p>
+      </div>
+    </div>
+    <div class="results results--team">
+      <?php foreach ($items as $i => $it): $href = $it[4] ?? $base . $it[2]; ?>
+        <a class="result reveal" style="--d:<?= $i * .08 ?>s" href="<?= e($href) ?>" target="_blank" rel="noopener">
+          <span class="result__ico"><?= icon($it[3]) ?></span>
+          <span class="result__txt"><b><?= e($it[0]) ?></b><small><?= e($it[1]) ?></small></span>
+          <?= icon('ext') ?>
+        </a>
+      <?php endforeach; ?>
+    </div>
+  </div>
+</section>
+<?php }

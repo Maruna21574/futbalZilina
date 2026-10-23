@@ -39,12 +39,6 @@ page_head($team['name'], $team['blurb'], [['Tímy', 'timy/']], upload($hero), $t
           <li><?= icon('pin') ?><div><small>Miesto</small><b>Rajecká 17, Žilina</b></div></li>
         </ul>
       </div>
-      <?php if (array_filter(RESULTS, fn($r) => $r[0] === $slug)): ?>
-      <div class="box reveal">
-        <h3>Výsledky a tabuľky</h3>
-        <?php results_tiles($slug); ?>
-      </div>
-      <?php endif; ?>
       <div class="box reveal">
         <h3>Ďalšie tímy</h3>
         <ul>
@@ -56,8 +50,10 @@ page_head($team['name'], $team['blurb'], [['Tímy', 'timy/']], upload($hero), $t
   </div>
 </section>
 
+<?php team_results($slug, $team); ?>
+
 <?php if ($news): ?>
-<section class="section section--tint">
+<section class="section">
   <div class="container">
     <div class="section__head reveal">
       <div><span class="eyebrow">Z dianí tímu</span><h2>Články – <?= e($team['name']) ?></h2></div>
