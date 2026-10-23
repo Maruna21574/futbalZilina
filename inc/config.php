@@ -22,22 +22,22 @@ const POSTS_PER_PAGE = 12;
 const TEAMS = [
     'pripravka' => [
         'name' => 'Prípravka', 'tag' => 'U11', 'ages' => '1. – 4. ročník ZŠ',
-        'league' => 'Turnaje OFZ Žilina', 'hero' => '2025/02/pripravka.jpg',
+        'league' => 'Turnaje OFZ Žilina', 'hero' => '2025/02/pripravka.jpg', 'card' => 'img/teams/pripravka.jpg',
         'blurb' => 'Najmladšie deti, ktoré sa učia radosť z hry, vedenie lopty a prvé prihrávky.',
     ],
     'mladsi-ziaci' => [
         'name' => 'Mladší žiaci', 'tag' => 'U13', 'ages' => '5. – 7. ročník ZŠ',
-        'league' => 'I. MIRAGE trieda mladší žiaci', 'hero' => '2017/02/DSC_5048_1.jpg',
+        'league' => 'I. MIRAGE trieda mladší žiaci', 'hero' => '2017/02/DSC_5048_1.jpg', 'card' => 'img/teams/mladsi-ziaci.jpg',
         'blurb' => 'Ligová súťaž, turnaje a letné sústredenie ako súčasť celoročného programu.',
     ],
     'ziaci' => [
         'name' => 'Starší žiaci', 'tag' => 'U15', 'ages' => '13 – 15 rokov',
-        'league' => 'I. MIRAGE trieda OBFZA Žilina', 'hero' => '2019/10/rocniky.na_.fotky1_.jpg',
+        'league' => 'I. MIRAGE trieda OBFZA Žilina', 'hero' => '2019/10/rocniky.na_.fotky1_.jpg', 'card' => 'img/teams/ziaci.jpg',
         'blurb' => 'Výkon na ihrisku a formovanie osobnosti, hodnôt a charakteru.',
     ],
     'dorast' => [
         'name' => 'Dorast', 'tag' => 'U19', 'ages' => 'Mladí muži',
-        'league' => 'I.A2B OBFZA Žilina', 'hero' => '2020/10/dorast.20.21.zeke_.jpg',
+        'league' => 'I.A2B OBFZA Žilina', 'hero' => '2020/10/dorast.20.21.zeke_.jpg', 'card' => 'img/teams/dorast.jpg',
         'blurb' => 'Mladí muži v súťaži OBFZA Žilina. Prihlášky prijímame celoročne.',
     ],
 ];
@@ -49,6 +49,14 @@ const PARTNERS = [
     ['Kardan servis', 'https://www.kardanservis.sk', '2018/08/kardan.png'],
     ['Kinekus', 'https://www.kinekus.sk', '2025/10/logo_kinekus_vseobecne_blue.png'],
     ['100 rokov Saleziánov', 'https://100.saleziani.sk', '2023/01/logo.100rocnica.sdb_.png'],
+];
+
+// Výsledky a tabuľky (externé odkazy; kľúč = slug tímu)
+const RESULTS = [
+    ['ziaci', 'Starší žiaci (U15)', 'https://sportnet.sme.sk/futbalnet/k/1-ksk-zilina/tim/67415/tabulky/?sutaz=5147', 'sportnet.sme.sk'],
+    ['mladsi-ziaci', 'Mladší žiaci (U13)', 'https://sportnet.sme.sk/futbalnet/k/1-ksk-zilina/tim/67416/tabulky/?partId=&sutaz=66913bd5b1444d2ac68c63e7', 'sportnet.sme.sk'],
+    ['dorast', 'Dorast (U19)', 'https://sportnet.sme.sk/futbalnet/k/1-ksk-zilina/tim/67414/tabulky/?partId=&sutaz=66912bb4b1444d2ac66bd332', 'sportnet.sme.sk'],
+    ['dorast', 'Dorast – futsal', 'https://www.sportvin.sk/clanky/1979', 'sportvin.sk'],
 ];
 
 const NAV = [

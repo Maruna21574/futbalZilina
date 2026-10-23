@@ -43,7 +43,7 @@ function post_card(array $p, int $delay = 0): void
 function team_card(string $slug, array $t, int $delay = 0): void
 { ?>
 <a class="team-card reveal" style="--d:<?= $delay * .1 ?>s" href="<?= e(url($slug . '/')) ?>">
-  <img src="<?= e(upload($t['hero'], true)) ?>" alt="<?= e($t['name']) ?>" loading="lazy" width="480" height="360">
+  <img src="<?= e(asset($t['card'])) ?>" alt="<?= e($t['name']) ?>" loading="lazy" width="760" height="960">
   <span class="team-card__tag"><?= e($t['tag']) ?></span>
   <div class="team-card__body">
     <small><?= e($t['ages']) ?></small>
@@ -52,4 +52,17 @@ function team_card(string $slug, array $t, int $delay = 0): void
     <span class="team-card__go">Spoznaj tím <?= icon('arrow') ?></span>
   </div>
 </a>
+<?php }
+
+function results_tiles(?string $only = null): void
+{ ?>
+<div class="results">
+  <?php foreach (RESULTS as $i => [$slug, $label, $href, $host]): if ($only && $slug !== $only) continue; ?>
+    <a class="result reveal" style="--d:<?= $i * .08 ?>s" href="<?= e($href) ?>" target="_blank" rel="noopener">
+      <span class="result__ico"><?= icon('trophy') ?></span>
+      <span class="result__txt"><b><?= e($label) ?></b><small>Tabuľka a výsledky · <?= e($host) ?></small></span>
+      <?= icon('ext') ?>
+    </a>
+  <?php endforeach; ?>
+</div>
 <?php }

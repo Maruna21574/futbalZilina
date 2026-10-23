@@ -15,7 +15,7 @@ $feature = array_shift($latest);
       </div>
     </div>
     <aside class="hero__card">
-      <div class="hero__photo"><img src="<?= e(upload('2025/06/WhatsApp-Image-2025-06-06-at-21.53.21.jpeg', true)) ?>" alt="Hráči 1. KŠK Žilina" width="480" height="360"></div>
+      <div class="hero__photo"><img src="<?= e(asset('img/hero.jpg')) ?>" alt="Hráči 1. KŠK Žilina" width="1000" height="1100"></div>
       <div class="hero__reg">
         <small>Nábor</small>
         <strong>Sezóna <?= e(REG_SEASON) ?></strong>
@@ -106,6 +106,19 @@ $feature = array_shift($latest);
       <div class="stat"><b data-count="<?= count($posts) ?>"><?= count($posts) ?></b><span>Článkov z klubu</span></div>
       <div class="stat"><b data-count="100">100</b><span>% radosti z hry</span></div>
     </div>
+  </div>
+</section>
+
+<section class="section section--tint">
+  <div class="container">
+    <div class="section__head reveal">
+      <div>
+        <span class="eyebrow">Súťaže</span>
+        <h2>Výsledky a tabuľky</h2>
+        <p>Aktuálne tabuľky, rozpisy a výsledky našich družstiev na portáli sportnet.sk.</p>
+      </div>
+    </div>
+    <?php results_tiles(); ?>
   </div>
 </section>
 
