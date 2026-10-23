@@ -1,0 +1,1 @@
+{"name":"ksk-tools","private":true,"type":"module","dependencies":{"cheerio":"^1.2.0","puppeteer-core":"^25.16.0","sharp":"^0.35.5"}}

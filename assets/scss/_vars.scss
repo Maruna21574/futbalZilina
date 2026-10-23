@@ -1,0 +1,30 @@
+// Premenné, reset a typografia
+$green-950: #03250f;
+$green-900: #053a1d;
+$green-800: #07522a;
+$green-700: #0b6b36;
+$green-600: #0f8a45;
+$green-500: #19a757;
+$green-100: #e3f2e8;
+$green-50: #f1f8f3;
+$yellow: #ffd21a;
+$yellow-600: #f2bd00;
+$yellow-100: #fff6cc;
+$ink: #0d1f15;
+$muted: #55645b;
+$line: #dbe5de;
+$white: #fff;
+
+$font-head: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+$font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+$radius: 18px;
+$radius-sm: 12px;
+$shadow-sm: 0 2px 8px rgba(5, 58, 29, .08);
+$shadow: 0 14px 40px -14px rgba(5, 58, 29, .28);
+$shadow-lg: 0 30px 70px -20px rgba(3, 37, 15, .45);
+$container: 1200px;
+$header-h: 82px;
+
+@mixin bp($w) { @media (min-width: $w) { @content; } }
+@mixin max($w) { @media (max-width: $w) { @content; } }

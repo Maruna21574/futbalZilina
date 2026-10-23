@@ -1,0 +1,79 @@
+@use "vars" as *;
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; scroll-padding-top: $header-h + 16px; }
+body {
+  margin: 0; font-family: $font-body; font-size: 17px; line-height: 1.65; color: $ink; background: $white;
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; overflow-x: hidden;
+}
+img, svg, iframe { max-width: 100%; display: block; }
+img { height: auto; }
+a { color: $green-700; text-decoration-thickness: 2px; text-underline-offset: 3px; transition: color .2s; &:hover { color: $green-500; } }
+h1, h2, h3, h4 { font-family: $font-head; line-height: 1.05; margin: 0 0 .5em; font-weight: 800; text-transform: uppercase; letter-spacing: .01em; color: $green-900; }
+h1 { font-size: clamp(2.6rem, 6vw, 4.6rem); }
+h2 { font-size: clamp(2rem, 4vw, 3.1rem); }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.25rem; }
+p { margin: 0 0 1.1em; }
+ul, ol { padding-left: 1.3em; }
+.container { width: min(100% - 2.5rem, $container); margin-inline: auto; }
+.skip { position: absolute; left: -999px; top: 0; z-index: 999; background: $yellow; padding: .6em 1em; &:focus { left: 8px; top: 8px; } }
+.i { width: 1.15em; height: 1.15em; flex: none; }
+:focus-visible { outline: 3px solid $yellow-600; outline-offset: 3px; border-radius: 4px; }
+::selection { background: $yellow; color: $green-950; }
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+
+// Obsah článkov / migrovaných stránok
+.prose {
+  max-width: 76ch;
+  h1, h2, h3, h4 { margin-top: 1.6em; }
+  h1:first-child, h2:first-child, h3:first-child { margin-top: 0; }
+  a { font-weight: 600; }
+  img { border-radius: $radius-sm; margin: 1.4em 0; box-shadow: $shadow-sm; }
+  ul, ol { margin: 0 0 1.2em; li { margin-bottom: .4em; } }
+  blockquote { margin: 1.5em 0; padding: 1em 1.4em; border-left: 5px solid $yellow; background: $green-50; border-radius: 0 $radius-sm $radius-sm 0; }
+  iframe { width: 100%; aspect-ratio: 16/9; height: auto; border: 0; border-radius: $radius; margin: 1.5em 0; box-shadow: $shadow; }
+  table { border-collapse: collapse; width: 100%; margin: 1.4em 0; td, th { border: 1px solid $line; padding: .6em .8em; } }
+  &--wide { max-width: none; }
+  > *:last-child { margin-bottom: 0; }
+  .gallery { max-width: none; }
+}
+
+.gallery {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr)); gap: .7rem; margin: 2rem 0;
+  a { display: block; position: relative; border-radius: $radius-sm; overflow: hidden; aspect-ratio: 4/3; background: $green-100; cursor: zoom-in;
+    &::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba($green-950, .5), transparent 55%); opacity: 0; transition: opacity .3s; }
+    &:hover::after { opacity: 1; }
+    &:hover img { transform: scale(1.07); } }
+  img { width: 100%; height: 100%; object-fit: cover; margin: 0; border-radius: 0; box-shadow: none; transition: transform .5s cubic-bezier(.2, .7, .2, 1); }
+}
+
+// Tlačidlá
+.btn {
+  display: inline-flex; align-items: center; gap: .6em; padding: .95em 1.7em; border-radius: 999px; border: 2px solid transparent;
+  font-family: $font-head; font-weight: 800; font-size: 1.15rem; letter-spacing: .06em; text-transform: uppercase; text-decoration: none; line-height: 1; cursor: pointer;
+  transition: transform .2s, box-shadow .2s, background .2s, color .2s;
+  .i { transition: transform .2s; }
+  &:hover .i-arrow { transform: translateX(4px); }
+  &:hover { transform: translateY(-2px); }
+  &--yellow { background: $yellow; color: $green-950; box-shadow: 0 8px 22px -8px rgba($yellow-600, .8); &:hover { background: #ffe14d; color: $green-950; } }
+  &--green { background: $green-700; color: $white; box-shadow: 0 8px 22px -8px rgba($green-700, .8); &:hover { background: $green-600; color: $white; } }
+  &--ghost { border-color: rgba($white, .65); color: $white; &:hover { background: $white; color: $green-900; } }
+  &--outline { border-color: $green-700; color: $green-700; &:hover { background: $green-700; color: $white; } }
+  &--sm { padding: .75em 1.3em; font-size: 1rem; }
+}
+
+// Nadpisy sekcií
+.eyebrow { margin-bottom: .5rem; display: inline-flex; align-items: center; gap: .6rem; font-family: $font-head; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; font-size: 1.05rem; color: $green-600;
+  &::before { content: ''; width: 34px; height: 4px; border-radius: 4px; background: $yellow; } }
+.section { padding: clamp(3.5rem, 8vw, 6.5rem) 0; position: relative; }
+.section--tint { background: $green-50; }
+.section--dark { background: $green-900; color: rgba($white, .86); h2, h3 { color: $white; } }
+.section__head { display: flex; justify-content: space-between; align-items: flex-end; gap: 1.5rem; flex-wrap: wrap; margin-bottom: clamp(2rem, 4vw, 3.2rem);
+  h2 { margin: .2em 0 0; }
+  p { margin: .6em 0 0; color: $muted; max-width: 56ch; } }
+
+// Animácie pri scrolle
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s cubic-bezier(.2, .7, .2, 1); transition-delay: var(--d, 0s);
+  &.in { opacity: 1; transform: none; } }
+.no-js .reveal { opacity: 1; transform: none; }

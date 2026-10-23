@@ -1,0 +1,37 @@
+[
+ {
+  "slug": "dorast",
+  "name": "dorast",
+  "count": 19
+ },
+ {
+  "slug": "klub",
+  "name": "klub",
+  "count": 17
+ },
+ {
+  "slug": "mladsi-ziaci",
+  "name": "mladší žiaci",
+  "count": 32
+ },
+ {
+  "slug": "nezaradene",
+  "name": "Nezaradené",
+  "count": 29
+ },
+ {
+  "slug": "pripravka",
+  "name": "prípravka",
+  "count": 16
+ },
+ {
+  "slug": "turnaj",
+  "name": "turnaj",
+  "count": 2
+ },
+ {
+  "slug": "ziaci",
+  "name": "žiaci",
+  "count": 33
+ }
+]

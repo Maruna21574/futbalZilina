@@ -1,0 +1,71 @@
+@use "vars" as *;
+
+// Topbar, header, navigácia, footer
+.topbar { background: $green-950; color: rgba($white, .8); font-size: .86rem;
+  &__in { display: flex; justify-content: space-between; align-items: center; gap: 1rem; min-height: 40px; }
+  &__claim { display: inline-flex; align-items: center; gap: .5rem; font-family: $font-head; text-transform: uppercase; letter-spacing: .14em; font-weight: 600; color: $yellow; font-size: .95rem; }
+  &__links { display: flex; gap: 1.6rem; a { color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: .45rem; &:hover { color: $yellow; } } .i { color: $yellow; width: 1em; } }
+  @include max(820px) { &__claim { display: none; } &__in { justify-content: center; } &__links { gap: 1rem; font-size: .8rem; a:last-child { display: none; } } }
+}
+
+.header { position: sticky; top: 0; z-index: 100; background: rgba($white, .94); backdrop-filter: saturate(1.4) blur(14px); border-bottom: 1px solid transparent; transition: box-shadow .3s, border-color .3s;
+  &.is-stuck { box-shadow: 0 8px 30px -12px rgba($green-950, .3); border-color: $line; }
+  &__in { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; min-height: $header-h; } }
+
+.brand { display: flex; align-items: center; gap: .85rem; text-decoration: none; color: $green-900;
+  img { width: auto; height: 58px; filter: drop-shadow(0 4px 6px rgba($green-900, .2)); transition: transform .4s; }
+  &:hover img { transform: rotate(-4deg) scale(1.05); }
+  &__text { display: flex; flex-direction: column; line-height: .92; font-family: $font-head; text-transform: uppercase; font-weight: 800;
+    b { font-size: 1.7rem; letter-spacing: .02em; }
+    span { font-size: 1.5rem; color: $green-600; letter-spacing: .24em; } } }
+
+.nav { display: flex; align-items: center; gap: 1.2rem;
+  > ul { list-style: none; display: flex; gap: .15rem; margin: 0; padding: 0; }
+  li { position: relative; }
+  a { text-decoration: none; }
+  > ul > li > a { display: flex; align-items: center; gap: .3rem; padding: .6rem .85rem; font-family: $font-head; font-weight: 700; font-size: 1.12rem; letter-spacing: .07em; text-transform: uppercase; color: $green-900; border-radius: 10px; position: relative;
+    .i { width: .85em; height: .85em; transition: transform .25s; }
+    &::after { content: ''; position: absolute; left: .85rem; right: .85rem; bottom: .2rem; height: 3px; border-radius: 3px; background: $yellow; transform: scaleX(0); transition: transform .3s; transform-origin: left; }
+    &:hover { color: $green-600; } }
+  > ul > li:hover > a::after, > ul > li.is-active > a::after { transform: scaleX(1); }
+  .sub { list-style: none; margin: 0; padding: .6rem; position: absolute; left: 0; top: 100%; min-width: 230px; background: $white; border-radius: $radius-sm; box-shadow: $shadow-lg; border: 1px solid $line; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all .25s;
+    a { display: block; padding: .6rem .9rem; border-radius: 8px; color: $ink; font-weight: 600; font-size: .95rem; &:hover { background: $green-50; color: $green-700; } } }
+  .has-sub:hover .sub, .has-sub:focus-within .sub { opacity: 1; visibility: visible; transform: none; }
+  &__cta { white-space: nowrap; }
+  @media (max-width: 1100px) { > ul > li > a { padding-inline: .55rem; font-size: 1.02rem; } .brand__text { display: none; } }
+}
+.burger { display: none; background: $green-700; color: $white; border: 0; border-radius: 12px; width: 48px; height: 48px; place-items: center; cursor: pointer; .i { width: 26px; height: 26px; } }
+
+@include max(980px) {
+  .burger { display: grid; }
+  .nav { position: fixed; inset: 0 0 0 auto; width: min(380px, 100%); background: $green-900; flex-direction: column; align-items: stretch; padding: 6.2rem 1.6rem 2rem; gap: 1rem; transform: translateX(105%); transition: transform .4s cubic-bezier(.2, .7, .2, 1); overflow-y: auto; box-shadow: -30px 0 60px rgba(0, 0, 0, .3);
+    > ul { flex-direction: column; gap: 0; }
+    > ul > li > a { color: $white; font-size: 1.5rem; padding: .7rem .2rem; border-bottom: 1px solid rgba($white, .1); border-radius: 0; &::after { display: none; } &:hover { color: $yellow; } .i { margin-left: auto; } }
+    .sub { position: static; opacity: 1; visibility: visible; transform: none; background: transparent; box-shadow: none; border: 0; padding: .3rem 0 .6rem 1rem; min-width: 0; display: none;
+      a { color: rgba($white, .8); &:hover { background: transparent; color: $yellow; } } }
+    .has-sub.open .sub { display: block; }
+    .has-sub.open > a .i { transform: rotate(180deg); }
+    &__cta { text-align: center; justify-content: center; margin-top: .6rem; } }
+  body.nav-open .nav { transform: none; }
+  body.nav-open .burger { position: fixed; top: 24px; right: 20px; z-index: 120; background: $yellow; color: $green-950; }
+  body.nav-open::after { content: ''; position: fixed; inset: 0; background: rgba($green-950, .55); z-index: 90; }
+  .header { z-index: 100; backdrop-filter: none; background: $white; } .nav { z-index: 110; visibility: hidden; transition: transform .4s cubic-bezier(.2, .7, .2, 1), visibility 0s .4s; }
+  body.nav-open .nav { visibility: visible; transition-delay: 0s; }
+  body.nav-open { overflow: hidden; }
+}
+
+// Footer
+.footer { background: $green-950; color: rgba($white, .75); position: relative; margin-top: 0;
+  &::before { content: ''; display: block; height: 8px; background: repeating-linear-gradient(115deg, $yellow 0 26px, $green-600 26px 52px); }
+  &__top { padding: 4.5rem 0 3rem; }
+  &__grid { display: grid; gap: 2.5rem; grid-template-columns: 1.4fr 1fr 1fr 1.4fr; @include max(900px) { grid-template-columns: 1fr 1fr; } @include max(560px) { grid-template-columns: 1fr; } }
+  h3 { color: $yellow; font-size: 1.3rem; letter-spacing: .12em; margin-bottom: 1rem; }
+  ul { list-style: none; padding: 0; margin: 0 0 1.4rem; li { margin-bottom: .55rem; } }
+  a { color: rgba($white, .85); text-decoration: none; &:hover { color: $yellow; } }
+  small { color: $yellow; font-weight: 700; margin-left: .3em; }
+  &__brand { img { height: 96px; width: auto; margin-bottom: 1.2rem; background: $white; padding: .6rem .8rem; border-radius: 16px; } p { max-width: 32ch; } }
+  &__contact li { display: flex; gap: .6rem; align-items: flex-start; .i { color: $yellow; margin-top: .3em; } }
+  &__bottom { border-top: 1px solid rgba($white, .1); padding: 1.2rem 0; font-size: .88rem; }
+  &__bottom-in { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem; }
+}
+main { overflow-x: clip; }

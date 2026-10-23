@@ -1,0 +1,162 @@
+[
+ {
+  "name": "Pondelok",
+  "items": [
+   {
+    "title": "Individuálna hra na gitaru a cajon",
+    "time": "13:30 – 17:30",
+    "irregular": false
+   },
+   {
+    "title": "Tréning – dorast (U19)",
+    "time": "18:00 – 20:00",
+    "irregular": false
+   }
+  ]
+ },
+ {
+  "name": "Utorok",
+  "items": [
+   {
+    "title": "Individuálna hra na gitaru",
+    "time": "13:20 – 17:20",
+    "irregular": false
+   },
+   {
+    "title": "Tréning – mladší žiaci (U13)",
+    "time": "15:15 – 17:15",
+    "irregular": false
+   },
+   {
+    "title": "Tréning – starší žiaci (U15)",
+    "time": "18:00 – 20:00",
+    "irregular": false
+   },
+   {
+    "title": "„Spolok veselosti“-stredoškolské stretko",
+    "time": "18:30 – 20:00",
+    "irregular": false
+   }
+  ]
+ },
+ {
+  "name": "Streda",
+  "items": [
+   {
+    "title": "Tréning – prípravka (U11)",
+    "time": "15:15 – 17:15",
+    "irregular": false
+   },
+   {
+    "title": "Individuálna hra na gitaru",
+    "time": "14:00 – 17:30",
+    "irregular": false
+   },
+   {
+    "title": "Animátorská prípravka – chlapci",
+    "time": "18:15 – 19:45",
+    "irregular": false
+   },
+   {
+    "title": "Ligový zápas – dorast (U19)",
+    "time": "19:30 – 21:30",
+    "irregular": false
+   }
+  ]
+ },
+ {
+  "name": "Štvrtok",
+  "items": [
+   {
+    "title": "Tréning – mladší žiaci (U13)",
+    "time": "15:15 – 17:15",
+    "irregular": false
+   },
+   {
+    "title": "Individuálna hra na gitaru",
+    "time": "14:15 – 17:15",
+    "irregular": false
+   },
+   {
+    "title": "Tréning – starší žiaci (U15)",
+    "time": "18:00 – 20:00",
+    "irregular": false
+   }
+  ]
+ },
+ {
+  "name": "Piatok",
+  "items": [
+   {
+    "title": "Tréning – prípravka (U11)",
+    "time": "15:15 – 17:15",
+    "irregular": false
+   },
+   {
+    "title": "„Zborík“ – vedenie detského zboru",
+    "time": "16:00 – 17:00",
+    "irregular": false
+   },
+   {
+    "title": "„Synkopa“- vedenie mladých hudobníkov v praxi",
+    "time": "17:15 – 18:45",
+    "irregular": false
+   },
+   {
+    "title": "MLADÝ LÍDER",
+    "time": "18:30 – 21:00",
+    "irregular": true
+   },
+   {
+    "title": "Duchovno zážitková víkendovka 1",
+    "time": "18:00 – 22:00",
+    "irregular": true
+   }
+  ]
+ },
+ {
+  "name": "Sobota",
+  "items": [
+   {
+    "title": "Duchovno zážitková víkendovka 1",
+    "time": "8:00 – 14:00",
+    "irregular": true
+   },
+   {
+    "title": "Duchovno zážitková víkendovka 2",
+    "time": "15:00 – 21:00",
+    "irregular": true
+   },
+   {
+    "title": "Turnaj prípraviek",
+    "time": "08:00 – 17:00",
+    "irregular": true
+   },
+   {
+    "title": "Ligový zápas – mladší žiaci (U13)",
+    "time": "09:00 – 12:00",
+    "irregular": false
+   }
+  ]
+ },
+ {
+  "name": "Nedeľa",
+  "items": [
+   {
+    "title": "Duchovno zážitková víkendovka 2",
+    "time": "8:00 – 15:00",
+    "irregular": true
+   },
+   {
+    "title": "Ligový zápas – starší žiaci (U15)",
+    "time": "09:00 – 12:00",
+    "irregular": false
+   },
+   {
+    "title": "„Zborík“-vedenie detského zboru v praxi",
+    "time": "8:45 – 10:45",
+    "irregular": false
+   }
+  ]
+ }
+]
